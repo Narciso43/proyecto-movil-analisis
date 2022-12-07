@@ -18,4 +18,10 @@ class CustomTheme {
   static final ThemeData theme = ThemeData.light().copyWith(
     primaryColor: colorGreen,
   );
+  static final ThemeData theme1 = ThemeData(
+    textTheme: Typography.blackRedwoodCity,
+  );
+  static final ThemeData theme2 = ThemeData(
+    textTheme: Typography.englishLike2018,
+  );
 }
