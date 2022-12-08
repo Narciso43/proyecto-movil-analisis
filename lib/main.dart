@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:js_onboarding/pages/home_page.dart';
+import 'package:js_onboarding/pages/login_page.dart';
+
 import 'package:js_onboarding/pages/onboarding_page.dart';
 
-import 'package:js_onboarding/pages/register_page.dart';
 import 'package:js_onboarding/providers/onboarding_provider.dart';
+import 'package:js_onboarding/providers/providers.dart';
+import 'package:js_onboarding/providers/register_provider.dart';
 import 'package:js_onboarding/utils/preferences.dart';
 import 'package:js_onboarding/utils/utils.dart';
 import 'package:provider/provider.dart';
-
-import 'pages/login_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -25,19 +26,22 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (_) => OnboardingProvider()),
+        //Revisar lo de os provider
+        ChangeNotifierProvider(create: (_) => LoginProvider()),
+        ChangeNotifierProvider(create: (_) => RegisterProvider()),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        title: 'SISTEMA DE ANALISIS',
+        title: 'SISTEMAS DE ANALISIS',
         theme: CustomTheme.theme,
         // initialRoute: preferences.initialPage,
-        initialRoute: OnboardingPage.routeName,
+        initialRoute: RegisterPage.routeName,
         routes: {
-          LoginPage.routeName: (_) => LoginPage(),
+          // LoginPage.routeName: (_) => LoginPage(),
           RegisterPage.routeName: (_) => RegisterPage(),
-          OnboardingPage.routeName: (_) => OnboardingPage(),
-          HomePage.routeName: (_) => HomePage(),
-          OnboardingPage.routeName: (_) => OnboardingPage(),
+          //OnboardingPage.routeName: (_) => OnboardingPage(),
+          //HomePage.routeName: (_) => HomePage(),
+          //OnboardingPage.routeName: (_) => OnboardingPage(),
         },
       ),
     );
